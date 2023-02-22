@@ -109,7 +109,7 @@ app.get('/', async (req, res) => {
                 PorodicaValue:myMap.get('Porodica'),
                 RodValue:myMap.get('Rod'),
                 VrstaValue:myMap.get('Vrsta'),
-                lastFilteredProperty: lastFilteredProperty
+                lastFilteredProperty: lastFilteredProperty,
             });
 
 

@@ -280,14 +280,14 @@
                         </tbody>
                     </table>
                     <div class="pagination">
-                        <label for="table_radio_<%= forPagination + i%>">&laquo; Previous</label>
+                        <label for="table_radio_<%= forPagination + i%>" id="Previous" class="Previous">&laquo; Previous</label>
                         <% for(var k=0; k < pageCount; k++) { %>
-                            <label for="table_radio_<%= k %>" id="table_pager_<%= k %>">
+                            <label for="table_radio_<%= k %>" id="<%= k %>" class="label">
                                 <%= k+1 %>
                             </label>
                             <% } %>
                                 <% if(i+1 !==pageCount) { %>
-                                    <label for="table_radio_<%= i+1 %>">Next &raquo;</label>
+                                    <label for="table_radio_<%= i+1 %>" id="Next"  class="Next">Next &raquo;</label>
                                     <% } %>
 
                     </div>
@@ -330,6 +330,60 @@
         el.addEventListener('keyup', doThing);
     })
 
+    let activePage = 0;
+    setActivePage();
+
+
+    //actions for 'Previous' and 'Next' buttons
+    var els = document.getElementsByClassName('Next');
+    [].forEach.call(els, function (el) {
+        el.addEventListener('click', add);
+    });
+
+    var els = document.getElementsByClassName('Previous');
+    [].forEach.call(els, function (el) {
+        el.addEventListener('click', sub);
+    });
+
+
+    var els = document.getElementsByClassName('label');
+    [].forEach.call(els, function (el) {
+        el.addEventListener('click', directPageClick);
+    });
+
+
+    function add() {
+        activePage += 1;
+        setActivePage();
+    }
+
+    function sub() {
+        if (activePage > 0) {
+            activePage -= 1;
+            setActivePage();
+        }
+
+    }
+
+    function directPageClick() {
+        activePage = +this.id;
+        setActivePage();
+    }
+
+    function setActivePage() {
+        console.log(activePage);
+        var els = document.getElementsByTagName('label');
+        [].forEach.call(els, function (el) {
+
+            if (+el.id === activePage) {
+                el.classList.add("active");
+            } else {
+                el.classList.remove("active");
+            }
+        });
+
+
+    }
 
     function focusInput(id) {
         var inputField = document.getElementById(id);

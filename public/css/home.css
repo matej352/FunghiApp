@@ -46,7 +46,7 @@ body {
 }
 .table-concept .table-radio:checked + .table-display + table + .pagination > label.active {
   color: #ffffff;
-  background-color: dimgrey;
+  background-color: #0070BB;
   cursor: default;
 }
 .table-concept .table-radio:checked + .table-display + table + .pagination > label.disabled {
