@@ -188,3 +188,13 @@ body {
   padding: 0;
   margin: 0;
 }
+
+.no-items {
+  display: flex;
+  height: 400px;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  left: 0;
+  right: 0;
+}
