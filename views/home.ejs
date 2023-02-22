@@ -280,7 +280,10 @@
                         </tbody>
                     </table>
                     <div class="pagination">
-                        <label for="table_radio_<%= forPagination + i%>" id="Previous" class="Previous">&laquo; Previous</label>
+                        <% if(i !== 0) { %>
+                            <label for="table_radio_<%= forPagination + i%>" id="Previous" class="Previous">&laquo; Previous</label>
+                            <% } %>
+                        
                         <% for(var k=0; k < pageCount; k++) { %>
                             <label for="table_radio_<%= k %>" id="<%= k %>" class="label">
                                 <%= k+1 %>
