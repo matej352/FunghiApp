@@ -25,20 +25,27 @@
                         <th></th>
                         <th>
                             <p class="p-header">Znanstveni naziv</p>
-                            <input type="text" name="ZnanstveniNaziv" value="<%=value%>" id="a"
+                            <input type="text" name="ZnanstveniNaziv" value="<%=ZnanstveniNazivValue%>"
+                                id="<%= lastFilteredProperty === 'ZnanstveniNaziv' ? 'lastSelectedInputId' : 'ZnanstveniNaziv' %>"
                                 placeholder="Pretraži...">
                         </th>
                         <th>
                             <p class="p-header">Porodica</p>
-                            <input type="text" name="drugi" placeholder="Pretraži...">
+                            <input type="text" name="Porodica" value="<%=PorodicaValue%>"
+                                id="<%= lastFilteredProperty === 'Porodica' ? 'lastSelectedInputId' : 'Porodica' %>"
+                                placeholder="Pretraži...">
                         </th>
                         <th>
                             <p class="p-header">Rod</p>
-                            <input type="text" name="prvi" placeholder="Pretraži...">
+                            <input type="text" name="Rod" value="<%=RodValue%>"
+                                id="<%= lastFilteredProperty === 'Rod' ? 'lastSelectedInputId' : 'Rod' %>"
+                                placeholder="Pretraži...">
                         </th>
                         <th>
                             <p class="p-header">Vrsta</p>
-                            <input type="text" name="prvi" placeholder="Pretraži...">
+                            <input type="text" name="Vrsta" value="<%=VrstaValue%>"
+                                id="<%= lastFilteredProperty === 'Vrsta' ? 'lastSelectedInputId' : 'Vrsta' %>"
+                                placeholder="Pretraži...">
                         </th>
                         <th>
                             <p class="p-header">Opis</p>
@@ -83,7 +90,9 @@
                     </tr>
                 </thead>
             </table>
-            <div class="no-items"><p>Nema rezultata</p></div>
+            <div class="no-items">
+                <p>Nema rezultata</p>
+            </div>
             <% } %>
 
 
@@ -99,20 +108,27 @@
                                 <th></th>
                                 <th>
                                     <p class="p-header">Znanstveni naziv</p>
-                                    <input type="text" name="ZnanstveniNaziv" value="<%=value%>" id="a"
+                                    <input type="text" name="ZnanstveniNaziv" value="<%=ZnanstveniNazivValue%>"
+                                        id="<%= lastFilteredProperty === 'ZnanstveniNaziv' ? 'lastSelectedInputId' : 'ZnanstveniNaziv' %>"
                                         placeholder="Pretraži...">
                                 </th>
                                 <th>
                                     <p class="p-header">Porodica</p>
-                                    <input type="text" name="drugi" placeholder="Pretraži...">
+                                    <input type="text" name="Porodica" value="<%=PorodicaValue%>"
+                                        id="<%= lastFilteredProperty === 'Porodica' ? 'lastSelectedInputId' : 'Porodica' %>"
+                                        placeholder="Pretraži...">
                                 </th>
                                 <th>
                                     <p class="p-header">Rod</p>
-                                    <input type="text" name="prvi" placeholder="Pretraži...">
+                                    <input type="text" name="Rod" value="<%=RodValue%>"
+                                        id="<%= lastFilteredProperty === 'Rod' ? 'lastSelectedInputId' : 'Rod' %>"
+                                        placeholder="Pretraži...">
                                 </th>
                                 <th>
                                     <p class="p-header">Vrsta</p>
-                                    <input type="text" name="prvi" placeholder="Pretraži...">
+                                    <input type="text" name="Vrsta" value="<%=VrstaValue%>"
+                                        id="<%= lastFilteredProperty === 'Vrsta' ? 'lastSelectedInputId' : 'Vrsta' %>"
+                                        placeholder="Pretraži...">
                                 </th>
                                 <th>
                                     <p class="p-header">Opis</p>
@@ -304,12 +320,18 @@
     document.getElementsByName("ZnanstveniNaziv").forEach(el => {
         el.addEventListener('keyup', doThing);
     })
+    document.getElementsByName("Porodica").forEach(el => {
+        el.addEventListener('keyup', doThing);
+    })
+    document.getElementsByName("Rod").forEach(el => {
+        el.addEventListener('keyup', doThing);
+    })
+    document.getElementsByName("Vrsta").forEach(el => {
+        el.addEventListener('keyup', doThing);
+    })
 
 
-    focusCampo('a');
-
-
-    function focusCampo(id) {
+    function focusInput(id) {
         var inputField = document.getElementById(id);
         if (inputField != null && inputField.value.length != 0) {
             if (inputField.createTextRange) {
@@ -323,10 +345,13 @@
                 inputField.selectionEnd = elemLen;
                 inputField.focus();
             }
-        } else {
+        } else if (inputField != null) {
             inputField.focus();
         }
     }
+
+
+    focusInput("lastSelectedInputId")
 
 
     /* function */
@@ -335,7 +360,7 @@
         fetch("/post", {
             method: "POST",
             body: JSON.stringify({
-                property: 'ZnanstveniNaziv',
+                property: this.name,
                 searchText: this.value
             }),
             headers: {

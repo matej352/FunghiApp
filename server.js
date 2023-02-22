@@ -19,23 +19,37 @@ app.set('views', path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, '/public')));
 
 
+const myMap = new Map();
+let lastFilteredProperty;
+
 app.post('/post', jsonParser, function (req, res) {
     const data = req.body;
-    console.log('iz backa ' + data.searchText)
-    req.app.set('searchText', data.searchText);
-    req.app.set('property', data.property);
+
+    console.log(data.searchText + "  za property --> " + data.property)
+
+    lastFilteredProperty = data.property;
+    myMap.set(data.property, data.searchText)
+
     res.redirect('/');
 });
 
 app.get('/', async (req, res) => {
 
-    const searchText = req.app.get('searchText');
-    const property = req.app.get('property');
+   let isFiltered = false;
 
-    if (searchText) {
+   for (const value of myMap.values()) {
+    if (value !== '') {
+        isFiltered = true;
+        break;
+    }
+  }
+
+
+
+    if (isFiltered) {
         try {
 
-            let helper = '%'+searchText+'%';
+            let helper = '%'+"ve"+'%';
 
             const dbResponse = await db.query(`SELECT * FROM tablicagljiva WHERE ZnanstveniNaziv LIKE ?`, [helper],);
             const rows = dbResponse[0];
@@ -55,7 +69,11 @@ app.get('/', async (req, res) => {
                 pageCount: pageCount,
                 lastPageCount: lastPageCount,
                 rows: rows,
-                value: searchText
+                ZnanstveniNazivValue: myMap.get('ZnanstveniNaziv'),
+                PorodicaValue:myMap.get('Porodica'),
+                RodValue:myMap.get('Rod'),
+                VrstaValue:myMap.get('Vrsta'),
+                lastFilteredProperty: lastFilteredProperty
 
             });
 
@@ -88,7 +106,11 @@ app.get('/', async (req, res) => {
                 pageCount: pageCount,
                 lastPageCount: lastPageCount,
                 rows: rows,
-                value: ''
+                ZnanstveniNazivValue: myMap.get('ZnanstveniNaziv'),
+                PorodicaValue:myMap.get('Porodica'),
+                RodValue:myMap.get('Rod'),
+                VrstaValue:myMap.get('Vrsta'),
+                lastFilteredProperty: lastFilteredProperty
 
             });
 
