@@ -29,7 +29,7 @@
                         <th></th>
                         <th>
                             <p class="p-header">Znanstveni naziv</p>
-                            <input type="text" name="ZnanstveniNaziv" value="<%=value%>"  placeholder="Pretraži...">
+                            <input type="text" name="ZnanstveniNaziv" value="<%=value%>" id="a" placeholder="Pretraži...">
                         </th>
                         <th>
                             <p class="p-header">Porodica</p>
@@ -208,6 +208,8 @@
 
             <% } %>
 
+          
+
 
 
 
@@ -226,25 +228,47 @@
 </html>
 
 <script>
-   
+
 
     //let ZnanstveniNazivValue = '';
 
     /* event listener */
-    document.getElementsByName("ZnanstveniNaziv").forEach( el => {
+    document.getElementsByName("ZnanstveniNaziv").forEach(el => {
         el.addEventListener('keyup', doThing);
-       
-        
+
+
     })
 
-    console.log(document.getElementsByName('ZnanstveniNaziv')[0]);
-    document.getElementsByName('ZnanstveniNaziv')[0].focus();
+    //console.log(document.getElementsByName('ZnanstveniNaziv')[0]);
+    //document.getElementsByName('ZnanstveniNaziv')[0].focus();
+
+    focusCampo('a');
+
+
+    function focusCampo(id) {
+        var inputField = document.getElementById(id);
+        if (inputField != null && inputField.value.length != 0) {
+            if (inputField.createTextRange) {
+                var FieldRange = inputField.createTextRange();
+                FieldRange.moveStart('character', inputField.value.length);
+                FieldRange.collapse();
+                FieldRange.select();
+            } else if (inputField.selectionStart || inputField.selectionStart == '0') {
+                var elemLen = inputField.value.length;
+                inputField.selectionStart = elemLen;
+                inputField.selectionEnd = elemLen;
+                inputField.focus();
+            }
+        } else {
+            inputField.focus();
+        }
+    }
 
 
     /* function */
     function doThing() {
-        setTimeout(() => {window.location.reload()}, 1000);
-       
+        setTimeout(() => { window.location.reload() }, 1000);
+
         //ZnanstveniNazivValue = this.value;
         //alert('Horray! Someone wrote "' + this.value + '"!');
         fetch("/post", {

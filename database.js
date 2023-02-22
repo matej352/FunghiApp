@@ -5,4 +5,4 @@ module.exports = mysql.createConnection({
     user: 'root',
     password: 'Bazepodataka1',
     database: 'Funghi'
-})
+}).promise()

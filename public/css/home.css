@@ -87,7 +87,7 @@ body {
   border: solid 1px #d8d8d8;
   border-left: 0;
   border-right: 0;
-  white-space: nowrap;
+  min-width: 200px;
 }
 .table-concept table tbody tr {
   transition: background-color 150ms ease-out;

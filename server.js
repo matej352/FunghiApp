@@ -37,7 +37,7 @@ app.get('/', async (req, res) => {
 
             let helper = '%'+searchText+'%';
 
-            const dbResponse = await db.promise().query('SELECT * FROM tablicagljiva LIMIT 5', [property, "Velikus Gljivikus"],);
+            const dbResponse = await db.query(`SELECT * FROM tablicagljiva WHERE ZnanstveniNaziv LIKE ?`, [helper],);
             const rows = dbResponse[0];
 
             //<% var perPage=3; var pageCount=4; var itemsCount=11; var forPagination=-1; var lastPageCount=2; %>
@@ -70,7 +70,7 @@ app.get('/', async (req, res) => {
     } else {
 
         try {
-            const dbResponse = await db.promise().query('SELECT * FROM tablicagljiva');
+            const dbResponse = await db.query('SELECT * FROM tablicagljiva');
             const rows = dbResponse[0];
 
             //<% var perPage=3; var pageCount=4; var itemsCount=11; var forPagination=-1; var lastPageCount=2; %>
