@@ -25,7 +25,7 @@ let lastFilteredProperty;
 app.post('/post', jsonParser, function (req, res) {
     const data = req.body;
 
-    console.log(data.searchText + "  za property --> " + data.property)
+    //console.log(data.searchText + "  za property --> " + data.property)
 
     lastFilteredProperty = data.property;
     myMap.set(data.property, data.searchText)
@@ -49,9 +49,9 @@ app.get('/', async (req, res) => {
     if (isFiltered) {
         try {
 
-            let helper = '%'+"ve"+'%';
+            let queryObj = generateQuery();
 
-            const dbResponse = await db.query(`SELECT * FROM tablicagljiva WHERE ZnanstveniNaziv LIKE ?`, [helper],);
+            const dbResponse = await db.query(queryObj.query, queryObj.data);
             const rows = dbResponse[0];
 
             //<% var perPage=3; var pageCount=4; var itemsCount=11; var forPagination=-1; var lastPageCount=2; %>
@@ -74,7 +74,6 @@ app.get('/', async (req, res) => {
                 RodValue:myMap.get('Rod'),
                 VrstaValue:myMap.get('Vrsta'),
                 lastFilteredProperty: lastFilteredProperty
-
             });
 
 
@@ -111,7 +110,6 @@ app.get('/', async (req, res) => {
                 RodValue:myMap.get('Rod'),
                 VrstaValue:myMap.get('Vrsta'),
                 lastFilteredProperty: lastFilteredProperty
-
             });
 
 
@@ -127,6 +125,25 @@ app.get('/', async (req, res) => {
 
 
 });
+
+
+function generateQuery() {
+
+    let query = `SELECT * FROM tablicagljiva WHERE `;
+    let data = [];
+
+    for (const [key, value] of myMap.entries()) {
+        if (value) {
+            query += key + ' LIKE ? AND ';
+            data.push('%'+value+'%')
+        }
+    }
+
+    query = query.substring(0, query.lastIndexOf('AND'));
+    return {query: query, data: data};
+
+
+}
 
 
 app.listen(port, () => {
