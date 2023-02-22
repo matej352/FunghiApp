@@ -42,6 +42,7 @@ body {
 }
 .table-concept .table-radio:checked + .table-display + table + .pagination {
   display: flex;
+  flex-wrap: wrap;
 }
 .table-concept .table-radio:checked + .table-display + table + .pagination > label.active {
   color: #ffffff;
