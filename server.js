@@ -2,6 +2,9 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const jstoxml = require('jstoxml');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const port = 3000;
 
@@ -51,7 +54,7 @@ app.get('/', async (req, res) => {
 
             let queryObj = generateQuery();
 
-            const dbResponse = await db.query(queryObj.query, queryObj.data);
+            const dbResponse = await db.execute(queryObj.query, queryObj.data);
             const rows = dbResponse[0];
 
             let forPagination = -1;
@@ -83,7 +86,7 @@ app.get('/', async (req, res) => {
     } else {
 
         try {
-            const dbResponse = await db.query('SELECT * FROM tablicagljiva');
+            const dbResponse = await db.execute('SELECT * FROM tablicagljiva');
             const rows = dbResponse[0];
 
             let forPagination = -1;
