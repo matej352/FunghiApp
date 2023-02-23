@@ -1,8 +1,10 @@
 
-
 var els = document.getElementsByTagName('a');
 [].forEach.call(els, function (el) {
-    var bb = new Blob(["<sometag><someothertag></someothertag></sometag>"], { type: 'text/plain' });
+
+    let objString = el.className;
+
+    var bb = new Blob([objString], { type: 'text/plain' });
     el.setAttribute('href', window.URL.createObjectURL(bb));
 });
 
@@ -64,7 +66,6 @@ function directPageClick() {
 }
 
 function setActivePage() {
-    console.log(activePage);
     var els = document.getElementsByTagName('label');
     [].forEach.call(els, function (el) {
 

@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const jstoxml = require('jstoxml');
+
 const port = 3000;
 
 var jsonParser = bodyParser.json()
@@ -24,8 +26,6 @@ let lastFilteredProperty;
 
 app.post('/post', jsonParser, function (req, res) {
     const data = req.body;
-
-    //console.log(data.searchText + "  za property --> " + data.property)
 
     lastFilteredProperty = data.property;
     myMap.set(data.property, data.searchText)
@@ -54,8 +54,6 @@ app.get('/', async (req, res) => {
             const dbResponse = await db.query(queryObj.query, queryObj.data);
             const rows = dbResponse[0];
 
-            //<% var perPage=3; var pageCount=4; var itemsCount=11; var forPagination=-1; var lastPageCount=2; %>
-
             let forPagination = -1;
             let perPage = 10;
             let itemsCount = rows.length;
@@ -73,13 +71,11 @@ app.get('/', async (req, res) => {
                 PorodicaValue:myMap.get('Porodica'),
                 RodValue:myMap.get('Rod'),
                 VrstaValue:myMap.get('Vrsta'),
-                lastFilteredProperty: lastFilteredProperty
+                lastFilteredProperty: lastFilteredProperty,
+                xmlRows: jsonToXml(rows)
             });
 
 
-
-
-            //console.log(rows)
         } catch (err) {
             console.log(err)
         }
@@ -89,8 +85,6 @@ app.get('/', async (req, res) => {
         try {
             const dbResponse = await db.query('SELECT * FROM tablicagljiva');
             const rows = dbResponse[0];
-
-            //<% var perPage=3; var pageCount=4; var itemsCount=11; var forPagination=-1; var lastPageCount=2; %>
 
             let forPagination = -1;
             let perPage = 10;
@@ -110,12 +104,9 @@ app.get('/', async (req, res) => {
                 RodValue:myMap.get('Rod'),
                 VrstaValue:myMap.get('Vrsta'),
                 lastFilteredProperty: lastFilteredProperty,
+                xmlRows: jsonToXml(rows)
             });
 
-
-
-
-            //console.log(rows)
         } catch (err) {
             console.log(err)
         }
@@ -143,6 +134,21 @@ function generateQuery() {
     return {query: query, data: data};
 
 
+}
+
+function jsonToXml(rows) {
+
+    const xmlTag = '<?xml version="1.0" encoding="UTF-8" ?>\n'
+    const config = {
+        indent: '    '
+    };
+
+    let xmlRows = []
+    rows.forEach( obj => {
+        xmlRows.push( xmlTag + jstoxml.toXML(obj, config))
+    })
+
+    return xmlRows;
 }
 
 

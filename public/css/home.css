@@ -90,6 +90,11 @@ body {
   border-right: 0;
   min-width: 200px;
 }
+
+.table-concept table tr td:first-child {
+  min-width: initial !important;
+}
+
 .table-concept table tbody tr {
   transition: background-color 150ms ease-out;
 }
@@ -128,65 +133,10 @@ body {
   margin: 0;
   padding: 0;
 }
-.button-container {
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: flex-end;
-}
-.button-container span {
-  color: #76ABDF;
-  text-align: right;
-  min-height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-.button-container button {
-  font-family: inherit;
-  font-size: inherit;
-  color: #ffffff;
-  padding: 10px 15px;
+
+button {
+  cursor: pointer;
   border: 0;
-  margin: 0;
-  outline: 0;
-  border-radius: 0;
-  transition: background-color 225ms ease-out;
-}
-.button-container button.primary {
-  background-color: #147eff;
-}
-.button-container button.primary:hover {
-  background-color: #479aff;
-}
-.button-container button.primary:active {
-  background-color: #0065e0;
-}
-.button-container button.primary {
-  background-color: #147eff;
-}
-.button-container button.primary:hover {
-  background-color: #479aff;
-}
-.button-container button.primary:active {
-  background-color: #0065e0;
-}
-.button-container button.danger {
-  background-color: #d11800;
-}
-.button-container button.danger:hover {
-  background-color: #ff2205;
-}
-.button-container button.danger:active {
-  background-color: #9e1200;
-}
-.button-container button svg {
-  fill: #ffffff;
-  vertical-align: middle;
-  padding: 0;
-  margin: 0;
 }
 
 .no-items {
