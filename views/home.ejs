@@ -1,3 +1,4 @@
+<!--Server Side Rendered-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,421 +9,306 @@
     <link rel="stylesheet" type="text/css" href="/css/home.css">
 </head>
 
-<div class="card">
-    <div class="table-title">
-        <h2>TABLICA GLJIVA</h2>
-    </div>
+<body>
+    <div class="card">
+        <div class="table-title">
+            <h2>TABLICA GLJIVA</h2>
+        </div>
 
-    <div class="table-concept"><input class="table-radio" type="radio" name="table_radio" id="table_radio_0"
-            checked="checked" />
+        <div class="table-concept"><input class="table-radio" type="radio" name="table_radio" id="table_radio_0"
+                checked="checked" />
 
-        <% if(pageCount==0) { %>
-            <div class="table-display">Showing 0 items</div>
+            <% if(pageCount==0) { %>
+                <div class="table-display">Showing 0 items</div>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>
-                            <p class="p-header">Znanstveni naziv</p>
-                            <input type="text" name="ZnanstveniNaziv" value="<%=ZnanstveniNazivValue%>"
-                                id="<%= lastFilteredProperty === 'ZnanstveniNaziv' ? 'lastSelectedInputId' : 'ZnanstveniNaziv' %>"
-                                placeholder="Pretraži...">
-                        </th>
-                        <th>
-                            <p class="p-header">Porodica</p>
-                            <input type="text" name="Porodica" value="<%=PorodicaValue%>"
-                                id="<%= lastFilteredProperty === 'Porodica' ? 'lastSelectedInputId' : 'Porodica' %>"
-                                placeholder="Pretraži...">
-                        </th>
-                        <th>
-                            <p class="p-header">Rod</p>
-                            <input type="text" name="Rod" value="<%=RodValue%>"
-                                id="<%= lastFilteredProperty === 'Rod' ? 'lastSelectedInputId' : 'Rod' %>"
-                                placeholder="Pretraži...">
-                        </th>
-                        <th>
-                            <p class="p-header">Vrsta</p>
-                            <input type="text" name="Vrsta" value="<%=VrstaValue%>"
-                                id="<%= lastFilteredProperty === 'Vrsta' ? 'lastSelectedInputId' : 'Vrsta' %>"
-                                placeholder="Pretraži...">
-                        </th>
-                        <th>
-                            <p class="p-header">Opis</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>
+                                <p class="p-header">Znanstveni naziv</p>
+                                <input type="text" name="ZnanstveniNaziv" value="<%=ZnanstveniNazivValue%>"
+                                    id="<%= lastFilteredProperty === 'ZnanstveniNaziv' ? 'lastSelectedInputId' : 'ZnanstveniNaziv' %>"
+                                    placeholder="Pretraži...">
+                            </th>
+                            <th>
+                                <p class="p-header">Porodica</p>
+                                <input type="text" name="Porodica" value="<%=PorodicaValue%>"
+                                    id="<%= lastFilteredProperty === 'Porodica' ? 'lastSelectedInputId' : 'Porodica' %>"
+                                    placeholder="Pretraži...">
+                            </th>
+                            <th>
+                                <p class="p-header">Rod</p>
+                                <input type="text" name="Rod" value="<%=RodValue%>"
+                                    id="<%= lastFilteredProperty === 'Rod' ? 'lastSelectedInputId' : 'Rod' %>"
+                                    placeholder="Pretraži...">
+                            </th>
+                            <th>
+                                <p class="p-header">Vrsta</p>
+                                <input type="text" name="Vrsta" value="<%=VrstaValue%>"
+                                    id="<%= lastFilteredProperty === 'Vrsta' ? 'lastSelectedInputId' : 'Vrsta' %>"
+                                    placeholder="Pretraži...">
+                            </th>
+                            <th>
+                                <p class="p-header">Opis</p>
 
-                        </th>
-                        <th>
-                            <p class="p-header">Klobuk opis</p>
+                            </th>
+                            <th>
+                                <p class="p-header">Klobuk opis</p>
 
-                        </th>
-                        <th>
-                            <p class="p-header">Listići opis</p>
+                            </th>
+                            <th>
+                                <p class="p-header">Listići opis</p>
 
-                        </th>
-                        <th>
-                            <p class="p-header">Stručak opis</p>
+                            </th>
+                            <th>
+                                <p class="p-header">Stručak opis</p>
 
-                        </th>
-                        <th>
-                            <p class="p-header">Boja otrusine</p>
+                            </th>
+                            <th>
+                                <p class="p-header">Boja otrusine</p>
 
-                        </th>
-                        <th>
-                            <p class="p-header">Slika</p>
+                            </th>
+                            <th>
+                                <p class="p-header">Slika</p>
 
-                        </th>
-                        <th>
-                            <p class="p-header">Jestivost</p>
+                            </th>
+                            <th>
+                                <p class="p-header">Jestivost</p>
 
-                        </th>
-                        <th>
-                            <p class="p-header">Sezona rasta</p>
+                            </th>
+                            <th>
+                                <p class="p-header">Sezona rasta</p>
 
-                        </th>
-                        <th>
-                            <p class="p-header">Stanište</p>
+                            </th>
+                            <th>
+                                <p class="p-header">Stanište</p>
 
-                        </th>
-                        <th>
-                            <p class="p-header">Simbioza sa</p>
+                            </th>
+                            <th>
+                                <p class="p-header">Simbioza sa</p>
 
-                        </th>
-                    </tr>
-                </thead>
-            </table>
-            <div class="no-items">
-                <p>Nema rezultata</p>
-            </div>
-            <% } %>
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+                <div class="no-items">
+                    <p>Nema rezultata</p>
+                </div>
+                <% } %>
 
 
-                <% for(var i=0; i < pageCount; i++) { %>
+                    <% for(var i=0; i < pageCount; i++) { %>
 
-                    <div class="table-display">Showing <%= i * perPage + 1 %> to <%= Math.min(i * perPage + perPage,
-                                itemsCount) %>
-                                of <%= itemsCount %> items</div>
+                        <div class="table-display">Showing <%= i * perPage + 1 %> to <%= Math.min(i * perPage + perPage,
+                                    itemsCount) %>
+                                    of <%= itemsCount %> items</div>
 
-                    <table>
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>
-                                    <p class="p-header">Znanstveni naziv</p>
-                                    <input type="text" name="ZnanstveniNaziv" value="<%=ZnanstveniNazivValue%>"
-                                        id="<%= lastFilteredProperty === 'ZnanstveniNaziv' ? 'lastSelectedInputId' : 'ZnanstveniNaziv' %>"
-                                        placeholder="Pretraži...">
-                                </th>
-                                <th>
-                                    <p class="p-header">Porodica</p>
-                                    <input type="text" name="Porodica" value="<%=PorodicaValue%>"
-                                        id="<%= lastFilteredProperty === 'Porodica' ? 'lastSelectedInputId' : 'Porodica' %>"
-                                        placeholder="Pretraži...">
-                                </th>
-                                <th>
-                                    <p class="p-header">Rod</p>
-                                    <input type="text" name="Rod" value="<%=RodValue%>"
-                                        id="<%= lastFilteredProperty === 'Rod' ? 'lastSelectedInputId' : 'Rod' %>"
-                                        placeholder="Pretraži...">
-                                </th>
-                                <th>
-                                    <p class="p-header">Vrsta</p>
-                                    <input type="text" name="Vrsta" value="<%=VrstaValue%>"
-                                        id="<%= lastFilteredProperty === 'Vrsta' ? 'lastSelectedInputId' : 'Vrsta' %>"
-                                        placeholder="Pretraži...">
-                                </th>
-                                <th>
-                                    <p class="p-header">Opis</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>
+                                        <p class="p-header">Znanstveni naziv</p>
+                                        <input type="text" name="ZnanstveniNaziv" value="<%=ZnanstveniNazivValue%>"
+                                            id="<%= lastFilteredProperty === 'ZnanstveniNaziv' ? 'lastSelectedInputId' : 'ZnanstveniNaziv' %>"
+                                            placeholder="Pretraži...">
+                                    </th>
+                                    <th>
+                                        <p class="p-header">Porodica</p>
+                                        <input type="text" name="Porodica" value="<%=PorodicaValue%>"
+                                            id="<%= lastFilteredProperty === 'Porodica' ? 'lastSelectedInputId' : 'Porodica' %>"
+                                            placeholder="Pretraži...">
+                                    </th>
+                                    <th>
+                                        <p class="p-header">Rod</p>
+                                        <input type="text" name="Rod" value="<%=RodValue%>"
+                                            id="<%= lastFilteredProperty === 'Rod' ? 'lastSelectedInputId' : 'Rod' %>"
+                                            placeholder="Pretraži...">
+                                    </th>
+                                    <th>
+                                        <p class="p-header">Vrsta</p>
+                                        <input type="text" name="Vrsta" value="<%=VrstaValue%>"
+                                            id="<%= lastFilteredProperty === 'Vrsta' ? 'lastSelectedInputId' : 'Vrsta' %>"
+                                            placeholder="Pretraži...">
+                                    </th>
+                                    <th>
+                                        <p class="p-header">Opis</p>
 
-                                </th>
-                                <th>
-                                    <p class="p-header">Klobuk opis</p>
+                                    </th>
+                                    <th>
+                                        <p class="p-header">Klobuk opis</p>
 
-                                </th>
-                                <th>
-                                    <p class="p-header">Listići opis</p>
+                                    </th>
+                                    <th>
+                                        <p class="p-header">Listići opis</p>
 
-                                </th>
-                                <th>
-                                    <p class="p-header">Stručak opis</p>
+                                    </th>
+                                    <th>
+                                        <p class="p-header">Stručak opis</p>
 
-                                </th>
-                                <th>
-                                    <p class="p-header">Boja otrusine</p>
+                                    </th>
+                                    <th>
+                                        <p class="p-header">Boja otrusine</p>
 
-                                </th>
-                                <th>
-                                    <p class="p-header">Slika</p>
+                                    </th>
+                                    <th>
+                                        <p class="p-header">Slika</p>
 
-                                </th>
-                                <th>
-                                    <p class="p-header">Jestivost</p>
+                                    </th>
+                                    <th>
+                                        <p class="p-header">Jestivost</p>
 
-                                </th>
-                                <th>
-                                    <p class="p-header">Sezona rasta</p>
+                                    </th>
+                                    <th>
+                                        <p class="p-header">Sezona rasta</p>
 
-                                </th>
-                                <th>
-                                    <p class="p-header">Stanište</p>
+                                    </th>
+                                    <th>
+                                        <p class="p-header">Stanište</p>
 
-                                </th>
-                                <th>
-                                    <p class="p-header">Simbioza sa</p>
+                                    </th>
+                                    <th>
+                                        <p class="p-header">Simbioza sa</p>
 
-                                </th>
-                            </tr>
-                        </thead>
+                                    </th>
+                                </tr>
+                            </thead>
 
-                        <tbody>
-                            <!--That means we are on last page-->
-                            <% if(i+1===pageCount) { %>
-                                <% for(var j=0; j < lastPageCount; j++) { %>
-                                    <tr>
-                                        <td><input type="checkbox" /></td>
+                            <tbody>
+                                <!--That means we are on last page-->
+                                <% if(i+1===pageCount) { %>
+                                    <% for(var j=0; j < lastPageCount; j++) { %>
+                                        <tr>
+                                            <td><input type="checkbox" /></td>
 
-                                        <td>
-                                            <%= rows[i * perPage + j ].ZnanstveniNaziv %>
-                                        </td>
-                                        <td>
-                                            <%= rows[i * perPage + j ].Porodica %>
-                                        </td>
-                                        <td>
-                                            <%= rows[i * perPage + j ].Rod %>
-                                        </td>
-                                        <td>
-                                            <%= rows[i * perPage + j ].Vrsta %>
-                                        </td>
-                                        <td>
-                                            <%= rows[i * perPage + j ].Opis %>
-                                        </td>
-                                        <td>
-                                            <%= rows[i * perPage + j ].KlobukOpis %>
-                                        </td>
-                                        <td>
-                                            <%= rows[i * perPage + j ].ListiciOpis %>
-                                        </td>
-                                        <td>
-                                            <%= rows[i * perPage + j ].StrucakOpis %>
-                                        </td>
-                                        <td>
-                                            <%= rows[i * perPage + j ].BojaOtrusine %>
-                                        </td>
-                                        <td>
-                                            <%= rows[i * perPage + j ].Slika %>
-                                        </td>
-                                        <td>
-                                            <%= rows[i * perPage + j ].Jestivost %>
-                                        </td>
-                                        <td>
-                                            <%= rows[i * perPage + j ].SezonaRasta %>
-                                        </td>
-                                        <td>
-                                            <%= rows[i * perPage + j ].Staniste %>
-                                        </td>
-                                        <td>
-                                            <%= rows[i * perPage + j ].SimbiozaSa %>
-                                        </td>
-                                    </tr>
-                                    <% } %>
-                                        <% } else { %>
-                                            <% for(var j=0; j < perPage; j++) { %>
-                                                <tr>
-                                                    <td><input type="checkbox" /></td>
+                                            <td>
+                                                <%= rows[i * perPage + j ].ZnanstveniNaziv %>
+                                            </td>
+                                            <td>
+                                                <%= rows[i * perPage + j ].Porodica %>
+                                            </td>
+                                            <td>
+                                                <%= rows[i * perPage + j ].Rod %>
+                                            </td>
+                                            <td>
+                                                <%= rows[i * perPage + j ].Vrsta %>
+                                            </td>
+                                            <td>
+                                                <%= rows[i * perPage + j ].Opis %>
+                                            </td>
+                                            <td>
+                                                <%= rows[i * perPage + j ].KlobukOpis %>
+                                            </td>
+                                            <td>
+                                                <%= rows[i * perPage + j ].ListiciOpis %>
+                                            </td>
+                                            <td>
+                                                <%= rows[i * perPage + j ].StrucakOpis %>
+                                            </td>
+                                            <td>
+                                                <%= rows[i * perPage + j ].BojaOtrusine %>
+                                            </td>
+                                            <td>
+                                                <%= rows[i * perPage + j ].Slika %>
+                                            </td>
+                                            <td>
+                                                <%= rows[i * perPage + j ].Jestivost %>
+                                            </td>
+                                            <td>
+                                                <%= rows[i * perPage + j ].SezonaRasta %>
+                                            </td>
+                                            <td>
+                                                <%= rows[i * perPage + j ].Staniste %>
+                                            </td>
+                                            <td>
+                                                <%= rows[i * perPage + j ].SimbiozaSa %>
+                                            </td>
+                                        </tr>
+                                        <% } %>
+                                            <% } else { %>
+                                                <% for(var j=0; j < perPage; j++) { %>
+                                                    <tr>
+                                                        <td>
+                                                            <a download="funghi.xml">Klik</a>
+                                                        </td>
 
-                                                    <td>
-                                                        <%= rows[i * perPage + j ].ZnanstveniNaziv %>
-                                                    </td>
-                                                    <td>
-                                                        <%= rows[i * perPage + j ].Porodica %>
-                                                    </td>
-                                                    <td>
-                                                        <%= rows[i * perPage + j ].Rod %>
-                                                    </td>
-                                                    <td>
-                                                        <%= rows[i * perPage + j ].Vrsta %>
-                                                    </td>
-                                                    <td>
-                                                        <%= rows[i * perPage + j ].Opis %>
-                                                    </td>
-                                                    <td>
-                                                        <%= rows[i * perPage + j ].KlobukOpis %>
-                                                    </td>
-                                                    <td>
-                                                        <%= rows[i * perPage + j ].ListiciOpis %>
-                                                    </td>
-                                                    <td>
-                                                        <%= rows[i * perPage + j ].StrucakOpis %>
-                                                    </td>
-                                                    <td>
-                                                        <%= rows[i * perPage + j ].BojaOtrusine %>
-                                                    </td>
-                                                    <td>
-                                                        <%= rows[i * perPage + j ].Slika %>
-                                                    </td>
-                                                    <td>
-                                                        <%= rows[i * perPage + j ].Jestivost %>
-                                                    </td>
-                                                    <td>
-                                                        <%= rows[i * perPage + j ].SezonaRasta %>
-                                                    </td>
-                                                    <td>
-                                                        <%= rows[i * perPage + j ].Staniste %>
-                                                    </td>
-                                                    <td>
-                                                        <%= rows[i * perPage + j ].SimbiozaSa %>
-                                                    </td>
-                                                </tr>
-                                                <% } %>
+                                                        <td>
+                                                            <%= rows[i * perPage + j ].ZnanstveniNaziv %>
+                                                        </td>
+                                                        <td>
+                                                            <%= rows[i * perPage + j ].Porodica %>
+                                                        </td>
+                                                        <td>
+                                                            <%= rows[i * perPage + j ].Rod %>
+                                                        </td>
+                                                        <td>
+                                                            <%= rows[i * perPage + j ].Vrsta %>
+                                                        </td>
+                                                        <td>
+                                                            <%= rows[i * perPage + j ].Opis %>
+                                                        </td>
+                                                        <td>
+                                                            <%= rows[i * perPage + j ].KlobukOpis %>
+                                                        </td>
+                                                        <td>
+                                                            <%= rows[i * perPage + j ].ListiciOpis %>
+                                                        </td>
+                                                        <td>
+                                                            <%= rows[i * perPage + j ].StrucakOpis %>
+                                                        </td>
+                                                        <td>
+                                                            <%= rows[i * perPage + j ].BojaOtrusine %>
+                                                        </td>
+                                                        <td>
+                                                            <%= rows[i * perPage + j ].Slika %>
+                                                        </td>
+                                                        <td>
+                                                            <%= rows[i * perPage + j ].Jestivost %>
+                                                        </td>
+                                                        <td>
+                                                            <%= rows[i * perPage + j ].SezonaRasta %>
+                                                        </td>
+                                                        <td>
+                                                            <%= rows[i * perPage + j ].Staniste %>
+                                                        </td>
+                                                        <td>
+                                                            <%= rows[i * perPage + j ].SimbiozaSa %>
+                                                        </td>
+                                                    </tr>
                                                     <% } %>
+                                                        <% } %>
 
 
 
-                        </tbody>
-                    </table>
-                    <div class="pagination">
-                        <% if(i !== 0) { %>
-                            <label for="table_radio_<%= forPagination + i%>" id="Previous" class="Previous">&laquo; Previous</label>
-                            <% } %>
-                        
-                        <% for(var k=0; k < pageCount; k++) { %>
-                            <label for="table_radio_<%= k %>" id="<%= k %>" class="label">
-                                <%= k+1 %>
-                            </label>
-                            <% } %>
-                                <% if(i+1 !==pageCount) { %>
-                                    <label for="table_radio_<%= i+1 %>" id="Next"  class="Next">Next &raquo;</label>
-                                    <% } %>
+                            </tbody>
+                        </table>
+                        <div class="pagination">
+                            <% if(i !==0) { %>
+                                <label for="table_radio_<%= forPagination + i%>" id="Previous" class="Previous">&laquo;
+                                    Previous</label>
+                                <% } %>
 
-                    </div>
-                    <input class="table-radio" type="radio" name="table_radio" id="table_radio_<%= i+1 %>" />
+                                    <% for(var k=0; k < pageCount; k++) { %>
+                                        <label for="table_radio_<%= k %>" id="<%= k %>" class="label">
+                                            <%= k+1 %>
+                                        </label>
+                                        <% } %>
+                                            <% if(i+1 !==pageCount) { %>
+                                                <label for="table_radio_<%= i+1 %>" id="Next" class="Next">Next
+                                                    &raquo;</label>
+                                                <% } %>
 
-                    <% } %>
+                        </div>
+                        <input class="table-radio" type="radio" name="table_radio" id="table_radio_<%= i+1 %>" />
 
-
-
-
+                        <% } %>
 
 
-
-
-
-
-
-
-
-
-
+        </div>
     </div>
-</div>
+
+    <script type="text/javascript" src="/js/home.js"></script>
+</body>
 
 </html>
-
-<script>
-
-    /* event listener */
-    document.getElementsByName("ZnanstveniNaziv").forEach(el => {
-        el.addEventListener('keyup', doThing);
-    })
-    document.getElementsByName("Porodica").forEach(el => {
-        el.addEventListener('keyup', doThing);
-    })
-    document.getElementsByName("Rod").forEach(el => {
-        el.addEventListener('keyup', doThing);
-    })
-    document.getElementsByName("Vrsta").forEach(el => {
-        el.addEventListener('keyup', doThing);
-    })
-
-    let activePage = 0;
-    setActivePage();
-
-
-    //actions for 'Previous' and 'Next' buttons
-    var els = document.getElementsByClassName('Next');
-    [].forEach.call(els, function (el) {
-        el.addEventListener('click', add);
-    });
-
-    var els = document.getElementsByClassName('Previous');
-    [].forEach.call(els, function (el) {
-        el.addEventListener('click', sub);
-    });
-
-
-    var els = document.getElementsByClassName('label');
-    [].forEach.call(els, function (el) {
-        el.addEventListener('click', directPageClick);
-    });
-
-
-    function add() {
-        activePage += 1;
-        setActivePage();
-    }
-
-    function sub() {
-        if (activePage > 0) {
-            activePage -= 1;
-            setActivePage();
-        }
-
-    }
-
-    function directPageClick() {
-        activePage = +this.id;
-        setActivePage();
-    }
-
-    function setActivePage() {
-        console.log(activePage);
-        var els = document.getElementsByTagName('label');
-        [].forEach.call(els, function (el) {
-
-            if (+el.id === activePage) {
-                el.classList.add("active");
-            } else {
-                el.classList.remove("active");
-            }
-        });
-
-
-    }
-
-    function focusInput(id) {
-        var inputField = document.getElementById(id);
-        if (inputField != null && inputField.value.length != 0) {
-            if (inputField.createTextRange) {
-                var FieldRange = inputField.createTextRange();
-                FieldRange.moveStart('character', inputField.value.length);
-                FieldRange.collapse();
-                FieldRange.select();
-            } else if (inputField.selectionStart || inputField.selectionStart == '0') {
-                var elemLen = inputField.value.length;
-                inputField.selectionStart = elemLen;
-                inputField.selectionEnd = elemLen;
-                inputField.focus();
-            }
-        } else if (inputField != null) {
-            inputField.focus();
-        }
-    }
-
-
-    focusInput("lastSelectedInputId")
-
-
-    /* function */
-    function doThing() {
-        setTimeout(() => { window.location.reload() }, 1000);
-        fetch("/post", {
-            method: "POST",
-            body: JSON.stringify({
-                property: this.name,
-                searchText: this.value
-            }),
-            headers: {
-                "Content-type": "application/json"
-            }
-        })
-    }
-</script>
