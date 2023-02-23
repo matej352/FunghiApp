@@ -148,3 +148,7 @@ button {
   left: 0;
   right: 0;
 }
+
+.label, .Previous, .Next {
+  user-select: none;
+}
