@@ -121,9 +121,7 @@ body {
 .table-concept .pagination > label:hover {
   background-color: #0070BB;
 }
-.table-concept .pagination > label:active {
-  background-color: #767676;
-}
+
 .table-title {
   color: #ffffff;
   background-color: #76ABDF;

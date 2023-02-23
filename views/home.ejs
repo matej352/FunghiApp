@@ -19,7 +19,7 @@
                 checked="checked" />
 
             <% if(pageCount==0) { %>
-                <div class="table-display">Showing 0 items</div>
+                <div class="table-display">Prikazivanje 0 zapisa</div>
 
                 <table>
                     <thead>
@@ -100,9 +100,9 @@
 
                     <% for(var i=0; i < pageCount; i++) { %>
 
-                        <div class="table-display">Showing <%= i * perPage + 1 %> to <%= Math.min(i * perPage + perPage,
+                        <div class="table-display">Prikazivanje <%= i * perPage + 1 %> do <%= Math.min(i * perPage + perPage,
                                     itemsCount) %>
-                                    of <%= itemsCount %> items</div>
+                                    od ukupno <%= itemsCount %> zapisa</div>
 
                         <table>
                             <thead>
@@ -311,7 +311,7 @@
                         <div class="pagination">
                             <% if(i !==0) { %>
                                 <label for="table_radio_<%= forPagination + i%>" id="Previous" class="Previous">&laquo;
-                                    Previous</label>
+                                    Prethodni</label>
                                 <% } %>
 
                                     <% for(var k=0; k < pageCount; k++) { %>
@@ -320,7 +320,7 @@
                                         </label>
                                         <% } %>
                                             <% if(i+1 !==pageCount) { %>
-                                                <label for="table_radio_<%= i+1 %>" id="Next" class="Next">Next
+                                                <label for="table_radio_<%= i+1 %>" id="Next" class="Next">Sljedeći
                                                     &raquo;</label>
                                                 <% } %>
 
